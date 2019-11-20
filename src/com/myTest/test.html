@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+    <script src="forword3days.js"></script>
+</head>
+<body>
+
+    <input type="text" id = "input1" placeholder="请输入日期（如：20190819）" style="width: 200px"/>
+    <button type="button" onclick = "getDate()">Click Me!</button>
+    <div id = 'test'></div>
+    <div id = 'date'></div>
+</body>
+<script type="text/javascript">
+    function getDate(){
+        var a = document.getElementById('input1').value;
+        var sysdate = string2Date(a);
+        var dateArray = beforeDay(3,sysdate);
+        // alert(dateArray)
+        document.getElementById('test').innerText = dateArray
+            // '前天：' + dateArray[0] + '昨天' + dateArray[1] + '今天' + dateArray[2];
+    }
+    function beforeDay(num,sysdate){
+        //设置日期，当前日期的前num天
+        var myDate = new Date(sysdate);
+        myDate.setDate(myDate.getDate() - (num-1));
+        var dateArray = [];
+        var dateTemp;
+        var flag = 1;
+        for (var i = 0; i < num; i++) {
+            dateTemp = myDate.getFullYear()+'-'+(myDate.getMonth()+1)+'-'+myDate.getDate();
+            dateArray.push(dateTemp);
+            myDate.setDate(myDate.getDate() + flag);
+        }
+        return dateArray;
+    }
+
+    function string2Date(str){
+        //将8位字符日期格式拼接为带中划线的字符日期格式
+        var dateString = str.substring(0,4) + '-' + str.substring(4,6) + '-' + str.substring(6,8);
+        //将字符串转换成Date类型
+        var temp  = new Date(dateString);
+        //获取不带 0 的日期字符串
+        var returnDate = temp.getFullYear()+'-'+(temp.getMonth()+1)+"-"+temp.getDate();
+        return returnDate;
+    }
+
+    //点击网页出现爱心效果
+    (function(window,document,undefined){
+        var hearts = [];
+        window.requestAnimationFrame = (function(){
+            return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                function (callback){
+                    setTimeout(callback,1000/60);
+                }
+        })();
+        init();
+        function init(){
+            css(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+            attachEvent();
+            gameloop();
+        }
+        function gameloop(){
+            for(var i=0;i<hearts.length;i++){
+                if(hearts[i].alpha <=0){
+                    document.body.removeChild(hearts[i].el);
+                    hearts.splice(i,1);
+                    continue;
+                }
+                hearts[i].y--;
+                hearts[i].scale += 0.004;
+                hearts[i].alpha -= 0.013;
+                hearts[i].el.style.cssText = "left:"+hearts[i].x+"px;top:"+hearts[i].y+"px;opacity:"+hearts[i].alpha+";transform:scale("+hearts[i].scale+","+hearts[i].scale+") rotate(45deg);background:"+hearts[i].color;
+            }
+            requestAnimationFrame(gameloop);
+        }
+        function attachEvent(){
+            var old = typeof window.onclick==="function" && window.onclick;
+            window.onclick = function(event){
+                old && old();
+                createHeart(event);
+            }
+        }
+        function createHeart(event){
+            var d = document.createElement("div");
+            d.className = "heart";
+            hearts.push({
+                el : d,
+                x : event.clientX - 5,
+                y : event.clientY - 5,
+                scale : 1,
+                alpha : 1,
+                color : randomColor()
+            });
+            document.body.appendChild(d);
+        }
+        function css(css){
+            var style = document.createElement("style");
+            style.type="text/css";
+            try{
+                style.appendChild(document.createTextNode(css));
+            }catch(ex){
+                style.styleSheet.cssText = css;
+            }
+            document.getElementsByTagName('head')[0].appendChild(style);
+        }
+        function randomColor(){
+            return "rgb("+(~~(Math.random()*255))+","+(~~(Math.random()*255))+","+(~~(Math.random()*255))+")";
+        }
+    })(window,document);
+</script>
+
+</html>
