@@ -9,6 +9,15 @@ public class MyTest {
     public static void main(String[] args) {
         boolean c;
 
+        byte[] b = new byte[]{ 0x0e };
+
+        String split = new String(new byte[]{ 0x0e });
+
+        FiledTest filedTest = new FiledTest();
+        filedTest.geta();
+        System.out.println(filedTest.getb());
+//        System.out.println(b);
+//        System.out.println("==="+split+"===");
        /* System.out.println(c);
 
         if(1>2){
@@ -19,7 +28,7 @@ public class MyTest {
            System.out.println("2:"+b);
        }*/
 
-        new MyTest().getzzz();
+       // new MyTest().getzzz();
     }
 
 
