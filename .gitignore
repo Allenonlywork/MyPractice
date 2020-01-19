@@ -3,4 +3,4 @@
 /MyPractice.iml
 /src/mybatis
 /.idea/workspace.xml
-*.classpath
+/src/zz/.classpath
