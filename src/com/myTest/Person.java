@@ -1,10 +1,16 @@
 package com.myTest;
 
 public class Person {
+
     private String name;
 
     public String getName(){
-        return "tim";
+        return this.name;
     }
-    public  void setName(String name){}
+    public void setName(String name){
+        this.name = name;
+    }
+    public String toString(){
+        return "mingzi"+name;
+    }
 }
