@@ -1,7 +1,4 @@
-package com.daily_job._202008;
-
-import java.util.ArrayList;
-import java.util.Hashtable;
+package com.daily_job._202008_09;
 
 public class Test {
 

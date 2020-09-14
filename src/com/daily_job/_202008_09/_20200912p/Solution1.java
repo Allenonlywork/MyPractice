@@ -1,4 +1,4 @@
-package com.daily_job._202008._20200912p;
+package com.daily_job._202008_09._20200912p;
 
 import java.util.Scanner;
 

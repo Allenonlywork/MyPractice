@@ -1,7 +1,6 @@
-package com.daily_job._202008;
+package com.daily_job._202008_09;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Hashtable;
 
 public class Main {

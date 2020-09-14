@@ -1,4 +1,4 @@
-package com.daily_job._202008;
+package com.daily_job._202008_09;
 
 public class OuterClass{
     private float f=1.0f;
