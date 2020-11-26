@@ -7,6 +7,7 @@ public class MyTest {
 
     static boolean b;
     public static void main(String[] args) {
+        System.out.println('0' -0);
         boolean c;
 
         byte[] b = new byte[]{ 0x0e };
@@ -16,6 +17,8 @@ public class MyTest {
         FiledTest filedTest = new FiledTest();
         filedTest.geta();
         System.out.println(filedTest.getb());
+
+        System.out.println(1.0 - 0.9);//0.09999999999999998
 //        System.out.println(b);
 //        System.out.println("==="+split+"===");
        /* System.out.println(c);
@@ -29,6 +32,8 @@ public class MyTest {
        }*/
 
        // new MyTest().getzzz();
+
+        System.out.println(1 ^ 2);
     }
 
 

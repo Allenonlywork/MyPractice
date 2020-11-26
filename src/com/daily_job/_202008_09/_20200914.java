@@ -24,7 +24,7 @@ public class _20200914 {
                     for(int k = 1;k < 25;k++){
                         String a = "B" + nowDate + getSerialNo(n);
                         int m = j+ 1;
-//                        System.out.println("nowDate String: " + a + "*****   " + m + "days before String: " + b);
+                        System.out.println("nowDate String: " + a + "*****   " + m + "days before String: " + b);
                         if(b.compareTo(a) >= 0){
                             flag = false;
                             System.out.println("false");
